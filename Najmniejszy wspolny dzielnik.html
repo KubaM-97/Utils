@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function daj(a,b){
+      let divider = 0;
+      if(b>a){
+        let c = a;
+        a = b
+        b = c
+      }
+      for(let i=1; i<=a; i++){
+        if((a%i==0)&&(b%i==0)){
+          divider = i
+        }
+      }
+      return divider
+    }
+    console.log(daj(16,40))
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const BUS = Symbol("BUS")
+    const BIKE = Symbol("BIKE")
+    const FOOT = Symbol("FOOT")
+    const PlayerState = Object.freeze({
+      BUS: 60,
+      BIKE: 20,
+      FOOT: 5
+    })
+    function journey(distance, transport){
+
+      const resultInMinutes = (distance / PlayerState[transport])*60
+      const hours = Math.trunc(resultInMinutes/60)
+      const minutes = resultInMinutes % (hours*60);
+
+      return `The Distance of ${distance} km you will cover by ${transport} in ${hours} hours and ${minutes} minutes.`
+    }
+      
+    console.group("Wyniki dla 100km")
+    console.log(journey(100, "BUS"))
+    console.log(journey(100, "BIKE"))
+    console.log(journey(100, "FOOT"))
+    console.groupEnd()
+
+  </script>
+</body>
+</html>

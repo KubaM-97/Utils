@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+
+
+    const boys = ["Tomek", "Kuba", "Laszlo", "Lionel"]
+
+    function main(boys){
+      function name(boy,time){
+        return new Promise(function(resolve, reject){
+          setTimeout(() => {
+            console.log(boy);
+            resolve()
+          },time*1000)
+        })
+      }
+
+      Promise.all([
+        name(boys[0],1),
+        name(boys[1],2),
+        name(boys[2],3),
+        name(boys[3],4)
+      ]).then(()=>{
+        console.log("Gratulacje dla uczestników konkursu.")
+      })
+    }
+    main(boys)
+
+  </script>
+</body>
+</html>

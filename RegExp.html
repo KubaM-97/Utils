@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  body{
+    background-color: lightblue;
+  }
+  .container{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 200px;
+    position: absolute;
+    top: 100px;
+  }
+  #strength{
+    height: 20px;
+    border-radius: 10px;
+  }
+
+  .pathetic{
+    animation: pathetic 1s;
+    width: 20%;
+    background-color: red;
+  }
+  @keyframes pathetic{
+    from {width: 0}
+    to {width: 20%;}
+  }
+
+  .weak{
+    animation: weak 1s;
+    width: 40%;
+    background-color: orange;
+  }
+  @keyframes weak{
+    from {width: 20%; background-color: red;}
+    to {width: 40%;}
+  }
+
+  .notbad{
+    animation: notbad 1s;
+    width: 60%;
+    background-color: yellow;
+  }
+  @keyframes notbad{
+    from {width: 40%; background-color: orange;}
+    to {width: 60%;}
+  }
+
+  .strong{
+    animation: strong 1s;
+    width: 80%;
+    background-color: yellowgreen;
+  }
+  @keyframes strong{
+    from {width: 60%; background-color: yellow;}
+    to {width: 80%;}
+  }
+
+  .pudzian{
+    animation: pudzian 1s;
+    width: 100%;
+    background-color: lightgreen;
+  }
+  @keyframes pudzian{
+    from {width: 80%; background-color: yellowgreen;}
+    to {width: 100%;}
+  }
+
+  </style>
+</head>
+<body>
+  <input type="text">
+  <p></p>
+  <div class="container">
+    <div id="strength"></div>
+  </div>
+  <script>
+    //Ćw.1
+    const isPhone = /^\+\d{2} (\d{3}-\d{3}-\d{3})|(\d{9})$/
+    console.log(isPhone.test('+48 123-456-789'))
+
+    //Ćw.2
+    function password(){
+      const pathetic = /^.{1,7}$/
+      const weak = /^(?=.*\d)(?=.*[a-z]).{8,}$/
+      // const notbad = /^.{8,}$/
+      // const strong = /^.{8,}$/
+      // const PUDZIAN = /^.{8,}$/
+
+      const input = document.querySelector("input")
+      const p = document.querySelector("p")
+      const div = document.querySelector("#strength")
+
+      if(pathetic.test(input.value)){
+        p.innerHTML="Pathetic"
+        div.className = ""
+        div.classList.add("pathetic")
+      }
+      if(weak.test(input.value)){
+        p.innerHTML="Weak"
+        div.className = ""
+        div.classList.add("weak")
+      }
+      if(notbad.test(input.value)){
+        p.innerHTML="Not Bad"
+        div.className = ""
+        div.classList.add("notbad")
+      }
+      if(strong.test(input.value)){
+        p.innerHTML="Strong"
+        div.className = ""
+        div.classList.add("strong")
+      }
+      if(PUDZIAN.test(input.value)){
+        p.innerHTML="PUDZIAN"
+        div.className = ""
+        div.classList.add("pudzian")
+      }
+    }
+    document.querySelector("input").addEventListener("input", password)
+  </script>
+</body>
+</html>

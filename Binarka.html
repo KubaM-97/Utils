@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Calculator{
+      static dec2bin(x){
+        const y = x
+        let bin = []
+        while(x!==1) {
+          bin.push(x%2)
+          x = Math.floor(x/2)
+        }
+        bin.push(x%2)
+
+        bin.reverse()
+        let output = ""
+        for(let i=0; i<bin.length; i++){
+          output += bin[i]
+        }
+        console.log("Binarna z liczby " + y + " to: " + output)
+      }
+      static bin2dec(x){
+        const y = x
+
+        let c = ("" + x).split("")
+
+        let output = 0
+        for(let i=0; i<c.length; i++){
+          if( (c[i] != 1) && c[i] != 0) {
+            throw new Error(x + " - to nie jest binarka")
+          }
+          if(c[i] == 1)  output += 2**i
+        }
+
+        console.log("Dziesiętna z liczby " + y + " to: " + output)
+      }
+    }
+
+    Calculator.dec2bin(1232)
+    Calculator.dec2bin(1)
+
+    Calculator.bin2dec(11011)
+    Calculator.bin2dec(11011111121)
+  </script>
+</body>
+</html>

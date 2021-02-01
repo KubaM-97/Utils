@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+
+    const obj1 = {
+      text: "Amanda ate an apple",
+      delay: 1
+    }
+    const obj2 = {
+      text: "Batman beated Bob",
+      delay: 2 //po 3 s
+    }
+    const obj3 = {
+      text: "Charlie chose cheese",
+      delay: 4 //po 7 s
+    }
+
+    function main(singleObject){
+        return new Promise(function(resolve, reject){
+          setTimeout(() => {
+            console.log(singleObject.text)
+            resolve()
+          },singleObject.delay*1000)
+        })
+    }
+
+
+    async function callMain(array){
+      try{
+        for(const key of array){
+          await main(key)
+        }
+      } catch(e) {
+        console.log(e)
+      } finally {
+        console.log("FERIE")
+      }
+    }
+    callMain([obj1, obj2, obj3])
+  </script>
+</body>
+</html>
